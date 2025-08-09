@@ -17,7 +17,6 @@ $matched = false;
 
 foreach ($router as $pattern => $routeConfig) {
     if (preg_match($pattern, $route, $matches)) {
-        // Проверяем есть ли обработчик для текущего HTTP-метода
         if (isset($routeConfig['methods'][$method])) {
             $matched = true;
             unset($matches[0]); // Удаляем полное совпадение

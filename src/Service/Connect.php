@@ -29,7 +29,6 @@ class Connect
         if ($res === false) {
             return null;
         }
-        // преобразовать в объект и передать в класс
         return $sth->fetchAll(\PDO::FETCH_CLASS, $className);
     }
 
