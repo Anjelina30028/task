@@ -1,0 +1,19 @@
+RewriteEngine On
+AddDefaultCharset UTF-8
+
+RewriteRule ^templates/public/style/([^/]+)\.css$ templates/public/style/$1.css [L]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_METHOD} ^(GET|POST|PUT|DELETE|PATCH|OPTIONS)$
+
+<Limit GET POST PUT DELETE OPTIONS>
+    Require all granted
+</Limit>
+
+Header set Access-Control-Allow-Origin "*"
+Header set Access-Control-Allow-Methods "GET, POST, PUT, DELETE, OPTIONS"
+Header set Access-Control-Allow-Headers "Content-Type, Authorization"
+
+RewriteRule ^(.*)$ index.php?q=$1 [L,QSA]
+
